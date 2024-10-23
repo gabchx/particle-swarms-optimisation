@@ -1,0 +1,308 @@
+<div id="post-content-4033" class="post-content-container">
+    <h1 style="text-align:center;">Let's visualize how it works!</h1>
+    <p style="text-align:center;"><img src="data/0*ry2R94p8pC1GDG-0.png" alt="dsfjnqsodbc" width="560" height="311"
+            class="atto_image_button_middle"><br></p>
+    <p style="text-align:center;"><em>Jan van der Greef/ Buiten-beeld/Minden Pictures/Corbis</em></p>
+
+    <p>The aim of this post is to focus on optimizing a specific mathematical function. This function is well-defined,
+        involving two variables (x and y), and it's smooth enough to allow differentiation. However, it's important to
+        remember that sometimes functions can be more complex, like non-differentiable step functions or functions
+        determined by a neural network's weights where finding the absolute minimum isn't straightforward. For teaching
+        purposes, we're going to use a particular function:</p>
+    <p><img src="data/Pasted%20Graphic%20%281%29.png" alt="" class="img-fluid"></p>
+    <p>This function is chosen because it enables both two-dimensional (2D) and three-dimensional (3D) visual
+        representations. The main goal here is to <strong>find the lowest possible value of this function</strong>,
+        known as its global minimum, by varying the values of x and y.</p>
+    <p><img src="data/1%2A4fXd_7_eLVd7Mv4SekKMNQ.png?time=1700245004873" alt="zef" width="1200" height="700"
+            class="img-fluid atto_image_button_text-bottom"><br></p>
+
+
+
+    <h2>I] Particles</h2>
+    <p>PSO draws its inspiration from the social behaviors observed in birds and fish. <em>Imagine a group of birds
+            searching for food in a vast valley, where food is available at only one spot. While none of the birds know
+            the exact location of the food, they each have an inkling of their distance from it.</em> In PSO, this
+        scenario translates to a group of particles (representing potential solutions) searching for a global minimum in
+        a designated space. Like the birds, these particles do not know the exact location of the global minimum, but
+        they have fitness values assigned by a <strong>fitness function</strong>, guiding them towards optimization.</p>
+
+    <p>The process begins with the <strong>random initialization</strong> of these particles' positions within the
+        search space.</p>
+
+    <p><img src="data/1cxxidXAmVtv8HhUQn1fEsg.webp" alt="" width="350" height="25"
+            class="img-fluid atto_image_button_text-bottom"><br></p>
+    <p>To find the optimal solution, particles must <strong>move</strong> - akin to the birds flying through the valley
+        in search of food.</p>
+
+    <p><img src="data/1fDXfaLGpcTCO4wiAEEwB8A.webp" alt="" width="336" height="25"
+            class="img-fluid atto_image_button_text-bottom"><br></p>
+    <p>Each particle moves with a certain velocity, allowing it to update its position over <strong>iterations to find
+            the global minimum</strong>. The velocity of each particle, significant in their search, is defined in each
+        direction. Initially, the velocity vector, like the particle's position, is randomized. This randomness is a key
+        aspect of PSO, categorizing it as a <strong>stochastic algorithm</strong>.</p>
+    <p><img src="data/1GluZHF8IVIexrwZH-W3cHg.webp" alt="" class="img-fluid"><br></p>
+
+    <h2>II]Sarm</h2>
+    <p>Let’s get back to the birds, <em>as birds fly through the valley, they maintain their speed
+            (<strong>inertia</strong>) but adjust their direction based on personal intuition
+            (<strong>cognitive</strong>) and the influence of the group (<strong>social</strong>)</em>. This mirrors the
+        process in PSO, where each iteration involves particles stochastically accelerating towards both their own best
+        known position (<strong>personal best</strong>) and the best known position of the group (<strong>global
+            best</strong>).</p>
+
+    <p><img src="data/Cognitive%20%28Personal%29.webp" alt="" class="img-fluid"><br></p>
+    <p>Concretely, the velocity update of each particle at every iteration is influenced by two key factors:</p>
+    <ul>
+        <li>Personal Best: The best solution a particular particle has discovered independently.</li>
+        <li>Global Best: The best solution found by the entire swarm of particles.</li>
+    </ul>
+
+    <p>This mechanism ensures that each particle 'remembers' and is guided by both its own most successful exploration
+        and the collective wisdom of the swarm. This <strong>dual influence</strong> is central to the dynamics and
+        success of PSO in finding optimal solutions.</p>
+
+    <h2><img src="data/1zZnmRHZqv5-0dheeh0GNdg.gif" alt="" class="img-fluid"><br></h2>
+    <h2>III] Optimisation</h2>
+    <p>Let’s talk about optimisation now. In the context of Particle Swarm Optimization (PSO), several key factors -
+        inertia, cognitive, and social coefficients - significantly influence the system's performance by balancing
+        exploration and exploitation.</p>
+
+    <p>The inertia, cognitive, and social coefficients control how much the particles explore and exploit.
+        <strong>Exploration</strong> refers to the particles' ability to <strong>search the entire space</strong> for
+        solutions, while <strong>exploitation</strong> is their ability to <strong>hone in on the best
+            solutions</strong> found so far.
+    </p>
+
+    <p>While the exact balance between these two is not strictly defined and may not necessarily lead to optimal
+        efficiency, it's a useful concept for understanding PSO. <em>In our analogy, birds might wake up feeling more or
+            less inclined to follow their intuition or the group, depending on the day.</em>&nbsp;While in PSO terms, at
+        each iteration, particles' <strong>accelerations are randomly weighted</strong>, influenced by both cognitive
+        (<em>personal best</em>) and social (<em>global best</em>) factors, represented by stochastic weights
+        <strong>r1</strong> and <strong>r2</strong>. Furthermore, the hyperparameter <em>w</em> (<strong>inertia
+            weight</strong>) plays a crucial role. It determines how much the swarm is inclined to change direction,
+        <em>akin to different bird species having varying tendencies to change direction over time.</em>
+    </p>
+    <p><em><img src="data/Inertia.webp" alt="" width="600" height="256" class="atto_image_button_left"><br></em></p>
+
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+    <p><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">This
+            weight affects the balance between exploration and exploitation: a </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">lower
+            w value leads to stronger convergence</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            (exploitation), while a </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">higher
+            w value encourages exploration</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">.
+            However, it's advisable to </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';"><u>keep
+                w below 1</u></em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            to prevent divergence.</span></p>
+    <p><img src="data/1a4n_Dtdnms3jnr-J7MEx9w.gif" alt="" class="img-fluid"
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+    </p>
+    <p><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">The
+            impact of </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">w</em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            is complemented by the coefficients </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c1</em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            and </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c2</em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">,
+            which are acceleration coefficients. </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c1</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            influences how much the swarm is </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">guided</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            by the </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">best
+            personal solutions</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            found over iterations, while </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c2</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            governs the </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">influence</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            of the </span><strong
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">best
+            global solution</strong><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">.</span>
+    </p>
+
+    <p>These coefficients are key in determining the swarm's behavior:</p>
+    <ul>
+        <li><strong>high c1</strong> leads to more <strong>individualistic</strong> behavior and <strong>less
+                convergence</strong></li>
+        <li><strong>high c2</strong> results in stronger <strong>group influence</strong><img
+                src="data/1xBDtCRamb4jl-U0lK8xPzg.gif" alt="" class="img-fluid"
+                style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+        </li>
+    </ul>
+    <p><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">In
+            summary, the coefficients </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c1</em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            and </span><em
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">c2</em><span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+            are complementary and their combination influences both the exploration and exploitation capabilities of the
+            swarm, crucial for effectively navigating the search space in PSO.</span><br></p>
+
+    <h2>IV] Auto hyperparameters</h2>
+    <p>The concept of auto hyperparameters takes the optimization process a step further. The idea is to
+        <strong>dynamically adjust the key coefficients</strong> during the optimization process, allowing the swarm to
+        adapt its behavior over time for better results.
+    </p>
+
+    <p>This approach is like having a group of birds that initially explores the valley widely, taking advantage of
+        their numbers. Then, as they learn more about the best locations, they focus their search more narrowly on these
+        areas, effectively exploiting their knowledge. Translating this, it means starting with <strong>higher
+            values</strong> for the inertia weight <em>w</em> and cognitive coefficient <em>c1</em>, and a <strong>lower
+            value</strong> for the social coefficient <em>c2</em>. This setup encourages broad exploration of the search
+        space. Over time, these values are adjusted: <em>c1</em> and <em>w</em> <strong>decrease</strong>, while
+        <strong>c2 increases</strong>, shifting the focus to exploiting the best solutions discovered.
+    </p>
+
+    <p>According to research, optimal static parameters are often <em><u>w=0.72984</u></em> and <em><u>c1 + c2 &gt;
+                4</u></em>, specifically <em><u>c1 = c2 = 2.05</u></em>.</p>
+
+    <p>This is complemented by a strategy of linearly decaying the parameter <strong>w</strong>.&nbsp;<span
+            style="font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">Building
+            on these principles, a proposed method for dynamically adjusting the coefficients involves the
+            following:</span></p>
+    <ul>
+        <li>For a total of <em>N</em> iterations and at the current iteration <em>c2</em> is increased linearly from 0.5
+            to 3.5, inversely to <em>c1</em>, which decreases from 3.5 to 0.5. This ensures that c1 + c2 = 4</li>
+        <li>The inertia weight <em>w</em> starts at 0.8 and gradually converges to 0.4.</li>
+    </ul>
+
+    <h2><img src="data/1guO8rohkg1WCcXpN42oD1w.gif" alt="" class="img-fluid"><br></h2>
+    <p style="text-align:center;"><em>Looking good !)</em></p>
+    <h2>V] Code</h2>
+    <p>Ultimately, this sounds like a lot of information, but the Particle Swarm Optimization is a very simple algorithm
+        and is even simpler to transcribe into python code.</p>
+
+    <pre><code>
+import sys
+import numpy as np
+
+class PSO:
+
+    def __init__(self, particles, velocities, fitness_function,
+                 w=0.8, c_1=1, c_2=1, max_iter=100, auto_coef=True):
+        self.particles = particles
+        self.velocities = velocities
+        self.fitness_function = fitness_function
+
+        self.N = len(self.particles)
+        self.w = w
+        self.c_1 = c_1
+        self.c_2 = c_2
+        self.auto_coef = auto_coef
+        self.max_iter = max_iter
+
+        self.p_bests = self.particles
+        self.p_bests_values = self.fitness_function(self.particles)
+        self.g_best = self.p_bests[0]
+        self.g_best_value = self.p_bests_values[0]
+        self.update_bests()
+
+        self.iter = 0
+        self.is_running = True
+        self.update_coef()
+
+    def __str__(self):
+        return f'[{self.iter}/{self.max_iter}] $w$:{self.w:.3f} - $c_1$:{self.c_1:.3f} - $c_2$:{self.c_2:.3f}'
+
+    def next(self):
+        if self.iter &gt; 0:
+            self.move_particles()
+            self.update_bests()
+            self.update_coef()
+
+        self.iter += 1
+        self.is_running = self.is_running and self.iter &lt; self.max_iter
+        return self.is_running
+
+    def update_coef(self):
+        if self.auto_coef:
+            t = self.iter
+            n = self.max_iter
+            self.w = (0.4/n**2) * (t - n) ** 2 + 0.4
+            self.c_1 = -3 * t / n + 3.5
+            self.c_2 =  3 * t / n + 0.5
+
+    def move_particles(self):
+
+        # add inertia
+        new_velocities = self.w * self.velocities
+        # add cognitive component
+        r_1 = np.random.random(self.N)
+        r_1 = np.tile(r_1[:, None], (1, 2))
+        new_velocities += self.c_1 * r_1 * (self.p_bests - self.particles)
+        # add social component
+        r_2 = np.random.random(self.N)
+        r_2 = np.tile(r_2[:, None], (1, 2))
+        g_best = np.tile(self.g_best[None], (self.N, 1))
+        new_velocities += self.c_2 * r_2 * (g_best  - self.particles)
+
+        self.is_running = np.sum(self.velocities - new_velocities) != 0
+
+        # update positions and velocities
+        self.velocities = new_velocities
+        self.particles = self.particles + new_velocities
+
+    def update_bests(self):
+        fits = self.fitness_function(self.particles)
+
+        for i in range(len(self.particles)):
+            # update best personal value (cognitive)
+            if fits[i] &lt; self.p_bests_values[i]:
+                self.p_bests_values[i] = fits[i]
+                self.p_bests[i] = self.particles[i]
+                # update best global value (social)
+                if fits[i] &lt; self.g_best_value:
+                    self.g_best_value = fits[i]
+                    self.g_best = self.particles[i]
+    </code></pre>
+
+    <p>Perhaps you will have noticed the only conditions to stop my iterations are:</p>
+    <ul>
+        <li>When the maximum number of iterations is reached (line 40)</li>
+        <li>When the particles stopped (line 65)</li>
+    </ul>
+
+    <p>These stop evaluation functions are not necessarily the bests. These <strong>stopping conditions depend heavily
+            on the size of the swarm</strong>.</p>
+    <p><br></p>
+    <pre><em><span><span style="color:rgb(255,207,53);"><strong>Sources :</strong></span></span></em></pre>
+    <pre><em><u><span style="color:rgb(255,207,53);"></span></u></em></pre>
+    <p><em><u><a href="http://particleswarm.info/index.html?source=post_page-----46289eeb2e14--------------------------------"><span
+                        style="color:rgb(255,207,53);">http://particleswarm.info/index.html</span></a></u></em></p>
+    <em><u></u></em>
+    <p><em><u><a href="http://www.swarmintelligence.org/tutorials.php"><span
+                        style="color:rgb(255,207,53);">http://www.swarmintelligence.org/tutorials.php</span></a></u></em>
+    </p><em><u></u></em>
+    <p><em><u><a href="https://gist.github.com/AxelThevenot/22b33d8b681a340976856c1b0cb085e4#file-pso-py"
+                    style="background-color:rgb(255,255,255);font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';"><span
+                        style="color:rgb(255,207,53);">https://gist.github.com/AxelThevenot/22b33d8b681a340976856c1b0cb085e4#file-pso-py</span></a></u></em>
+    </p><em><u></u></em>
+    <p><em><u><a href="https://towardsdatascience.com/particle-swarm-optimization-visually-explained-46289eeb2e14"
+                    style="background-color:rgb(255,255,255);font-size:0.9375rem;font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';"><span
+                        style="color:rgb(255,207,53);">https://towardsdatascience.com/particle-swarm-optimization-visually-explained-46289eeb2e14</span></a></u></em>
+    </p><br>
+    <p></p>
+</div>

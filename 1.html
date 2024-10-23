@@ -1,0 +1,401 @@
+<div class="editor-indent" style="margin-left: 30px;">
+    <div class="editor-indent" style="margin-left: 30px;">
+        <div class="editor-indent" style="margin-left: 30px;">
+            <div class="editor-indent" style="margin-left: 30px;">
+                <div class="editor-indent" style="margin-left: 30px;">
+                    <div class="editor-indent" style="margin-left: 30px;">
+                        <div class="editor-indent" style="margin-left: 30px;">
+                            <div class="editor-indent" style="margin-left: 30px;">
+                                <h3>From a coding perspective</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="editor-indent" style="margin-left: 30px;">
+    <div class="editor-indent" style="margin-left: 30px;">
+        <div class="editor-indent" style="margin-left: 30px;">
+            <div class="editor-indent" style="margin-left: 30px;">
+                <p dir="ltr" style="text-align: left;"><img src="data/d561ec46-5f05-40fb-b1ff-a80f1160b4b4.jpg" alt=""
+                        width="512" height="512" role="presentation" class="img-fluid atto_image_button_text-bottom">
+                </p>
+            </div>
+        </div>
+    </div>
+</div><br>
+<p>PSO simulates the social behavior of birds within a flock. In our context, the "flock" is a set of potential
+    solutions (particles) that move through the problem space, looking for the optimum.</p>
+
+<p>Each particle has two main attributes:</p>
+<ul>
+    <li>Position (x): This represents a potential solution.</li>
+    <li>Velocity (v): This determines the direction and distance the particle will move during the next iteration.</li>
+</ul>
+
+<p>The particles are guided by two "best" values:</p>
+<ul>
+    <li>Personal Best (pbest): The best solution a particle has achieved so far.</li>
+    <li>Global Best (gbest): The best solution any particle in the swarm has achieved.</li>
+</ul>
+
+<p>In PSO, particles update their velocity and position with the following considerations:</p>
+<ul>
+    <li>Inertia: The tendency to continue in the same direction.</li>
+    <li>Cognitive Component: The particle's memory of its own best position.</li>
+    <li>Social Component: The particle's knowledge of the global best position.</li>
+</ul>
+
+<h2></h2>
+<h3>I] Pseudo code:</h3>
+<p><img src="data/F1.png" alt="" role="presentation" class="img-fluid"><br></p>
+<ol>
+    <li>
+        <p><strong>Initialization</strong>:</p>
+    </li>
+    <ul>
+        <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>N</mi>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>v</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>c</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>c</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>i</mi>
+                            <mrow>
+                                <mi>m</mi>
+                                <mi>a</mi>
+                                <mi>x</mi>
+                            </mrow>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <mi>f</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">N,x<sub>i​</sub>,v<sub>i​</sub>,c<sub>1</sub>​,c<sub>2​</sub>,imax​,f</span>
+            are initialized.</li>
+        <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>S</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">S</span> is a swarm of size <math
+                xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>N</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">N</span>.</li>
+        <li>Positions <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>x</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">x</span> and velocities <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>v</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">v</span> for each particle are initialized.</li>
+        <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <msub>
+                            <mi>r</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo separator="true">,</mo>
+                        <msub>
+                            <mi>r</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">r1​,r2​</span> are random numbers in <math
+                xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mo stretchy="false">[</mo>
+                        <mn>0</mn>
+                        <mo separator="true">,</mo>
+                        <mn>1</mn>
+                        <mo stretchy="false">]</mo>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">[0,1]</span>.</li>
+        <li>Inertia weight <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>θ</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">θ</span> is calculated.</li>
+        <li>Best positions <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <msup>
+                            <mi>x</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">x∗</span> and global best <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <msup>
+                            <mi>g</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">g∗</span> are initialized.</li>
+    </ul>
+</ol>
+<ol>
+
+    <li>
+        <p><strong>Iteration Loop</strong>:</p>
+    </li>
+    <ul>
+        <li>Velocity is updated using inertia, cognitive component, and social component.</li>
+        <li>Position is updated.</li>
+        <li>The new position is evaluated using the objective function <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow>
+                        <mi>f</mi>
+                    </mrow>
+                </semantics>
+            </math><span aria-hidden="true">f</span>.</li>
+        <li>Personal best and global best are potentially updated.</li>
+    </ul>
+</ol>
+<ol>
+
+    <li>
+        <p><strong>Convergence Check</strong> (Optional):</p>
+        <ul>
+            <li>If the convergence criteria are met, the algorithm stops.</li>
+        </ul>
+    </li>
+</ol><br>
+<h2>II] Python Implementation of PSO:</h2>
+<p></p>
+<code>
+    <pre><p></p><pre><code>"""</code></pre>
+<pre><code>import sys
+import numpy as np
+
+class PSO:
+
+    def __init__(self, particles, velocities, fitness_function,
+                 w=0.8, c_1=1, c_2=1, max_iter=100, auto_coef=True):
+        self.particles = particles
+        self.velocities = velocities
+        self.fitness_function = fitness_function
+
+        self.N = len(self.particles)
+        self.w = w
+        self.c_1 = c_1
+        self.c_2 = c_2
+        self.auto_coef = auto_coef
+        self.max_iter = max_iter
+
+        self.p_bests = self.particles
+        self.p_bests_values = self.fitness_function(self.particles)
+        self.g_best = self.p_bests[0]
+        self.g_best_value = self.p_bests_values[0]
+        self.update_bests()
+
+        self.iter = 0
+        self.is_running = True
+        self.update_coef()
+
+    def __str__(self):
+        return f'[{self.iter}/{self.max_iter}] $w$:{self.w:.3f} - $c_1$:{self.c_1:.3f} - $c_2$:{self.c_2:.3f}'
+
+    def next(self):
+        if self.iter &gt; 0:
+            self.move_particles()
+            self.update_bests()
+            self.update_coef()
+
+        self.iter += 1
+        self.is_running = self.is_running and self.iter &lt; self.max_iter
+        return self.is_running
+
+    def update_coef(self):
+        if self.auto_coef:
+            t = self.iter
+            n = self.max_iter
+            self.w = (0.4/n**2) * (t - n) ** 2 + 0.4
+            self.c_1 = -3 * t / n + 3.5
+            self.c_2 =  3 * t / n + 0.5
+
+    def move_particles(self):
+
+        # add inertia
+        new_velocities = self.w * self.velocities
+        # add cognitive component
+        r_1 = np.random.random(self.N)
+        r_1 = np.tile(r_1[:, None], (1, 2))
+        new_velocities += self.c_1 * r_1 * (self.p_bests - self.particles)
+        # add social component
+        r_2 = np.random.random(self.N)
+        r_2 = np.tile(r_2[:, None], (1, 2))
+        g_best = np.tile(self.g_best[None], (self.N, 1))
+        new_velocities += self.c_2 * r_2 * (g_best  - self.particles)
+
+        self.is_running = np.sum(self.velocities - new_velocities) != 0
+
+        # update positions and velocities
+        self.velocities = new_velocities
+        self.particles = self.particles + new_velocities
+
+    def update_bests(self):
+        fits = self.fitness_function(self.particles)
+
+        for i in range(len(self.particles)):
+            # update best personal value (cognitive)
+            if fits[i] &lt; self.p_bests_values[i]:
+                self.p_bests_values[i] = fits[i]
+                self.p_bests[i] = self.particles[i]
+                # update best global value (social)
+                if fits[i] &lt; self.g_best_value:
+                    self.g_best_value = fits[i]
+                    self.g_best = self.particles[i]</code></pre>
+<pre><code><pre><code>"""</code></pre>
+</code></pre>
+</pre></code>
+<p></p>
+<h4>Linking Code to Pseudo-code:</h4>
+<ul>
+    <li>The <strong>initialization</strong> in the Python code corresponds to the initialization steps in the
+        pseudo-code.</li>
+    <li>The <strong><code>next</code> method</strong> corresponds to the iteration loop, where velocities and positions
+        are updated, and the best values are potentially updated as well.</li>
+    <li>The <strong><code>update_coef</code> method</strong> corresponds to the calculation of inertia in the
+        pseudo-code, although with a specific strategy for changing the coefficients over time.</li>
+    <li>The <strong><code>move_particles</code> method</strong> represents the velocity and position update steps.</li>
+    <li>The <strong><code>update_bests</code> method</strong> corresponds to the evaluation of the new position and
+        update of <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+                <mrow>
+                    <msup>
+                        <mi>x</mi>
+                        <mo>∗</mo>
+                    </msup>
+                </mrow>
+            </semantics>
+        </math><span aria-hidden="true">x∗</span> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+                <mrow>
+                    <msup>
+                        <mi>g</mi>
+                        <mo>∗</mo>
+                    </msup>
+                </mrow>
+            </semantics>
+        </math><span aria-hidden="true">g∗</span>.</li>
+</ul>
+
+<h4>Class PSO:</h4>
+<p>We define a PSO class that encapsulates all the behaviors of the particle swarm.</p>
+
+<h5>Initialization (<code>__init__</code>method):</h5>
+<p><span
+        style="font-family: SFMono-Regular, Menlo, Monaco, Consolas, &quot;Liberation Mono&quot;, &quot;Courier New&quot;, monospace; font-size: inherit;">def
+        __init__(self, particles, velocities, fitness_function, w=0.8, c_1=1, c_2=1, max_iter=100,
+        auto_coef=True):</span><br></p>
+<p></p>
+<ul>
+    <li>We initialize the swarm with a set of particles and their velocities.</li>
+    <li>We also set the <code>fitness_function</code>, which evaluates how good a position (solution) is.</li>
+    <li><code>w</code>, <code>c_1</code>, and <code>c_2</code> are the coefficients for inertia, cognitive, and social
+        components, respectively.</li>
+    <li><code>max_iter</code> is the maximum number of iterations (times the swarm will move).</li>
+    <li><code>auto_coef</code> allows for dynamic adjustment of coefficients.</li>
+</ul>
+<p></p>
+<h5>String Representation (<code>__str__</code> method):</h5>This is a utility function that gives us a human-readable
+representation of the current state of the swarm.<br>
+<p></p>
+<p></p>
+<h5>Iteration (<code>next</code> method):</h5>
+<p>def next(self):<br></p>
+<ul>
+    <li><span style="font-size: 0.9375rem;">This method advances the algorithm by one iteration.</span><br></li>
+    <li>It moves the particles by updating their velocity and position.</li>
+    <li>It also updates the personal and global bests.</li>
+</ul>
+<h5>Coefficient Update (<code>update_coef</code> method):</h5>
+<p>If <code>auto_coef</code> is true, this method updates the coefficients based on the iteration number. This is an
+    advanced feature that can help the swarm converge more effectively.</p>
+<h5>Particle Movement (<code>move_particles</code> method):</h5>
+<pre><div><div><span style="font-size: inherit;">def&nbsp;move_particles(self):</span><br></div></div></pre>
+<ul>
+    <li>This method applies inertia to the current velocity.</li>
+    <li>It then adds the cognitive component, which steers the particle towards its personal best.</li>
+    <li>Lastly, the social component is added, which steers the particle towards the global best.</li>
+    <li>It checks if any movement occurred to determine if the algorithm should continue running.</li>
+</ul>
+<h5>Updating Bests (<code>update_bests</code> method):</h5>
+<pre><div><div><span style="font-size: inherit;">def&nbsp;update_bests(self):</span><br></div></div></pre>
+<ul>
+    <li>After moving the particles, this method evaluates the new positions.</li>
+    <li>It updates each particle's personal best if a better solution is found.</li>
+    <li>It also updates the global best if any particle finds a better solution than the current global best.</li>
+</ul>
+<p><br></p>
+<p></p>
+
+
+<h3>Example Usage:</h3>
+<pre>        <code>
+# Define your problem's fitness_function.
+def fitness_function(positions):
+    # Your implementation here.
+    pass
+
+# Initialize particles and velocities.
+particles = np.random.rand(100, 2)  # 100 particles, 2-dimensional space.
+velocities = np.zeros((100, 2))
+
+# Create the PSO instance.
+pso_instance = PSO(particles, velocities, fitness_function)
+
+# Run the PSO algorithm.
+while pso_instance.next():
+    print(pso_instance)
+
+# Access the best solution found.
+print(f'Best Position: {pso_instance.g_best}')
+print(f'Best Value: {pso_instance.g_best_value}')
+        </code><br></pre>
+<p>And that's how we implement a basic PSO algorithm in Python! Now, you can try running the PSO on different
+    optimization problems and see how it performs. Remember, the settings for the coefficients and the fitness function
+    can greatly influence the efficiency and outcome of the PSO. Happy optimizing!</p>
